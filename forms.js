@@ -6,6 +6,13 @@ var FORM_SUBJECTS = {
   news: "Site Medicinae: quero ser avisada (novidades)"
 };
 
+var INTERESSES = {
+  "circulos-estudos-feminino": "Círculos de Mulheres e Estudos sobre o Feminino",
+  "eventos-imersoes": "Eventos e imersões",
+  "profissionais": "Supervisão e grupos de estudo para profissionais",
+  "textos": "Textos e crônicas"
+};
+
 document.querySelectorAll("form[data-form]").forEach(function (form) {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -17,8 +24,8 @@ document.querySelectorAll("form[data-form]").forEach(function (form) {
     var data = new FormData(form);
     data.delete("website");
     data.delete("interesses");
-    var marcados = Array.prototype.map.call(form.querySelectorAll("input[name=interesses]:checked"), function (c) { return c.value; });
-    if (marcados.length) data.set("interesses", marcados.join(", "));
+    var marcados = Array.prototype.map.call(form.querySelectorAll("input[name=interesses]:checked"), function (c) { return INTERESSES[c.value] || c.value; });
+    if (marcados.length) data.set("interesses", marcados.join("; "));
     data.set("access_key", WEB3FORMS_KEY);
     data.set("subject", FORM_SUBJECTS[kind] || "Site Medicinae");
     data.set("from_name", "Site Medicinae");
