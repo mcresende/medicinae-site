@@ -101,7 +101,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;
 footer .brand span{color:var(--sage-dark);font-size:1.1rem}
 footer .brand img{width:44px;height:44px}
 footer a:hover{color:var(--sage-dark)}
-.flinks{display:flex;gap:22px}
+.flinks{display:flex;flex-wrap:wrap;gap:10px 22px}
 
 @media (max-width:760px){
   .areas-grid{grid-template-columns:1fr}
